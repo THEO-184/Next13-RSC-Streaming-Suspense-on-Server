@@ -1,16 +1,20 @@
 import React from "react";
 import { Repo } from "../code/repos/interfaces.repos";
 import { FaCodeBranch, FaEye, FaStar } from "react-icons/fa";
+import { revalidateObj } from "../code/repos/page";
 
 async function fetchRepo(name: string): Promise<Repo> {
-	const response = await fetch(`https://api.github.com/repos/THEO-184/${name}`);
+	const response = await fetch(
+		`https://api.github.com/repos/THEO-184/${name}`,
+		revalidateObj
+	);
+
 	const repo = await response.json();
 	return repo;
 }
 
 const RepoComponent = async ({ name }: { name: string }) => {
 	const repo = await fetchRepo(name);
-	console.log("repo", repo);
 
 	return (
 		<>

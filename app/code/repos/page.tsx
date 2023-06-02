@@ -37,8 +37,17 @@ const ReposPage = async () => {
 
 export default ReposPage;
 
+export const revalidateObj = {
+	next: {
+		revalidate: 60,
+	},
+};
+
 async function fetchRepos(): Promise<ReposResponse> {
-	const response = await fetch("https://api.github.com/users/THEO-184/repos");
+	const response = await fetch(
+		"https://api.github.com/users/THEO-184/repos",
+		revalidateObj
+	);
 	const repos = await response.json();
 	return repos;
 }
