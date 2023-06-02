@@ -14,6 +14,10 @@ const Links = [
 		name: "Code",
 		link: "/code/repos",
 	},
+	{
+		name: "Courses",
+		link: "/courses",
+	},
 ];
 
 const Header = () => {
